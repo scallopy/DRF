@@ -16,9 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from fbvPassenger import views
+from cbvCourse.views import CourseList, CourseDetail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('passengers/', views.passenger_list),
     path('passengers/<int:pk>', views.passenger_detail),
+    path('courses/', CourseList.as_view()),
+    path('courses/<int:pk>', CourseDetail.as_view()),
+
 ]
