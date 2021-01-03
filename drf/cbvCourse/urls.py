@@ -15,10 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from . import views
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+router.register('', views.CourseViewSet)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('passengers/', include('fbvPassenger.urls')),
-    path('courses/', include('cbvCourse.urls')),
-
+    path('', include(router.urls))
 ]
+
+"""
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', views.CourseList.as_view()),
+    path('<int:pk>', views.CourseDetail.as_view()),
+]
+"""
